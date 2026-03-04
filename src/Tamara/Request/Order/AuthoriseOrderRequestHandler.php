@@ -11,7 +11,7 @@ class AuthoriseOrderRequestHandler extends AbstractRequestHandler
 {
     private const AUTHORISE_ORDER_ENDPOINT = '/orders/%s/authorise';
 
-    public function __invoke(AuthoriseOrderRequest $request)
+    public function __invoke(AuthoriseOrderRequest $request): AuthoriseOrderResponse
     {
         $response = $this->httpClient->post(
             sprintf(self::AUTHORISE_ORDER_ENDPOINT, $request->getOrderId()),

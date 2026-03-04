@@ -11,7 +11,7 @@ class CreateCheckoutRequestHandler extends AbstractRequestHandler
 {
     private const CHECKOUT_ENDPOINT = '/checkout';
 
-    public function __invoke(CreateCheckoutRequest $request)
+    public function __invoke(CreateCheckoutRequest $request): CreateCheckoutResponse
     {
         $response = $this->httpClient->post(
             self::CHECKOUT_ENDPOINT,

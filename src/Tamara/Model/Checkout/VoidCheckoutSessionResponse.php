@@ -34,6 +34,9 @@ class VoidCheckoutSessionResponse
      */
     private $storeCode;
 
+    /**
+     * @param array<string, mixed> $response
+     */
     public function __construct(array $response)
     {
         $this->orderWasVoided = $response[self::ORDER_WAS_VOIDED];
@@ -42,6 +45,9 @@ class VoidCheckoutSessionResponse
         $this->storeCode = $response[self::STORE_CODE];
     }
 
+    /**
+     * @return array<string, mixed>
+     */
     public function toArray(): array
     {
         return [

@@ -14,15 +14,21 @@ class AuthoriseMessage extends AbstractMessage
      */
     private $orderStatus;
 
+    /**
+     * @param array<string, mixed> $data
+     */
     public function __construct(string $orderId, string $orderReferenceId, array $data, string $orderStatus)
     {
         parent::__construct($orderId, $orderReferenceId, $data);
         $this->orderStatus = $orderStatus;
     }
 
+    /**
+     * @param array<string, mixed> $data
+     */
     public static function fromArray(array $data): AbstractMessage
     {
-        return new static(
+        return new self(
             $data[self::ORDER_ID],
             $data[self::ORDER_REFERENCE_ID],
             $data[self::DATA],

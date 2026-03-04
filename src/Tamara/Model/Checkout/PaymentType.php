@@ -15,16 +15,20 @@ class PaymentType
         MAX_LIMIT = 'max_limit',
         SUPPORTED_INSTALMENTS = 'supported_instalments';
 
-    private $name;
-    private $description;
-    private $minLimit;
-    private $maxLimit;
+    private string $name;
+
+    private string $description;
+
+    private Money $minLimit;
+
+    private Money $maxLimit;
+
+    /** @var array<int, Instalment> */
+    private array $supportedInstalments;
 
     /**
-     * @var Instalment[]
+     * @param array<int, Instalment> $supportedInstalments
      */
-    private $supportedInstalments;
-
     public function __construct(
         string $name,
         string $description,
@@ -60,13 +64,16 @@ class PaymentType
     }
 
     /**
-     * @return Instalment[]
+     * @return array<int, Instalment>
      */
     public function getSupportedInstalments(): array
     {
         return $this->supportedInstalments;
     }
 
+    /**
+     * @return array<string, mixed>
+     */
     public function toArray(): array
     {
         $result = [

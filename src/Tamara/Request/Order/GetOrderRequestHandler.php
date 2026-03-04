@@ -11,7 +11,7 @@ class GetOrderRequestHandler extends AbstractRequestHandler
 {
     private const GET_ORDER_URL = '/merchants/orders/%s';
 
-    public function __invoke(GetOrderRequest $request)
+    public function __invoke(GetOrderRequest $request): GetOrderResponse
     {
         $response = $this->httpClient->get(
             sprintf(self::GET_ORDER_URL, $request->getOrderId())

@@ -20,6 +20,9 @@ class VoidCheckoutSessionResponse extends ClientResponse
         return $this->voidCheckoutSessionResponse;
     }
 
+    /**
+     * @param array<string, mixed> $responseData
+     */
     protected function parse(array $responseData): void
     {
         $this->voidCheckoutSessionResponse = new \Tamara\Model\Checkout\VoidCheckoutSessionResponse($responseData);

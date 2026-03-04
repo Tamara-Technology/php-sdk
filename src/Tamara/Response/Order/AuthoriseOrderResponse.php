@@ -40,7 +40,7 @@ class AuthoriseOrderResponse extends ClientResponse
     private $paymentType;
 
     /**
-     * @var bool
+     * @var bool|null
      */
     private $autoCaptured;
 
@@ -111,7 +111,7 @@ class AuthoriseOrderResponse extends ClientResponse
     }
 
     /**
-     * @param array $responseData
+     * @param array<string, mixed> $responseData
      * @throws \Exception
      */
     protected function parse(array $responseData): void

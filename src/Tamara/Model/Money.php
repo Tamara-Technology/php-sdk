@@ -26,12 +26,12 @@ class Money
         $this->currency = $currency;
     }
 
-    public function getAmount()
+    public function getAmount(): float
     {
         return $this->amount;
     }
 
-    public function getCurrency()
+    public function getCurrency(): string
     {
         return $this->currency;
     }
@@ -53,9 +53,9 @@ class Money
     }
 
     /**
-     * @return array
+     * @return array<string, mixed>
      */
-    public function toArray()
+    public function toArray(): array
     {
         return [
             self::AMOUNT => $this->getAmount(),
@@ -64,10 +64,10 @@ class Money
     }
 
     /**
-     * @param array $data
+     * @param array<string, mixed> $data
      * @return Money
      */
-    public static function fromArray(array $data)
+    public static function fromArray(array $data): self
     {
         return new self(
             (float) $data[self::AMOUNT],

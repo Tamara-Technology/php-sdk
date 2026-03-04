@@ -11,7 +11,7 @@ class CancelOrderRequestHandler extends AbstractRequestHandler
 {
     private const CANCEL_ORDER_ENDPOINT = '/orders/%s/cancel';
 
-    public function __invoke(CancelOrderRequest $request)
+    public function __invoke(CancelOrderRequest $request): CancelResponse
     {
         $response = $this->httpClient->post(
             sprintf(self::CANCEL_ORDER_ENDPOINT, $request->getOrderId()),

@@ -73,6 +73,9 @@ class CaptureItem
      */
     private $createdAt;
 
+    /**
+     * @param array<string, mixed> $data
+     */
     public static function fromArray(array $data): CaptureItem
     {
         $self = new self();
@@ -190,6 +193,9 @@ class CaptureItem
         $this->createdAt = $createdAt;
     }
 
+    /**
+     * @return array<string, mixed>
+     */
     public function toArray(): array
     {
         return [
@@ -200,7 +206,7 @@ class CaptureItem
             self::SHIPPING_AMOUNT => $this->getShippingAmount()->toArray(),
             self::TAX_AMOUNT      => $this->getTaxAmount()->toArray(),
             self::DISCOUNT_AMOUNT => $this->getDiscountAmount()->toArray(),
-            self:: SHIPPING_INFO  => $this->getShippingInfo()->toArray(),
+            self::SHIPPING_INFO  => $this->getShippingInfo()->toArray(),
             self::ITEMS           => $this->getItems()->toArray(),
             self::CREATED_AT      => $this->getCreatedAt()->format(DateTime::ATOM),
         ];

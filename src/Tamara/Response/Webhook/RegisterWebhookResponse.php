@@ -19,6 +19,9 @@ class RegisterWebhookResponse extends ClientResponse
         return $this->webhookId;
     }
 
+    /**
+     * @param array<string, mixed> $responseData
+     */
     protected function parse(array $responseData): void
     {
         $this->webhookId = $responseData[Webhook::WEBHOOK_ID];

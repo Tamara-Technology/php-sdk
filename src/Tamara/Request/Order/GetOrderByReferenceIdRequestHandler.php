@@ -11,7 +11,7 @@ class GetOrderByReferenceIdRequestHandler extends AbstractRequestHandler
 {
     private const GET_ORDER_BY_REFERENCE_ID_URL = '/merchants/orders/reference-id/%s';
 
-    public function __invoke(GetOrderByReferenceIdRequest $request)
+    public function __invoke(GetOrderByReferenceIdRequest $request): GetOrderByReferenceIdResponse
     {
         $response = $this->httpClient->get(
             sprintf(self::GET_ORDER_BY_REFERENCE_ID_URL, $request->getReferenceId())

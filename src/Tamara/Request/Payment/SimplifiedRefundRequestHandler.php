@@ -11,7 +11,7 @@ class SimplifiedRefundRequestHandler extends AbstractRequestHandler
 {
     private const SIMPLIFIED_REFUND_ENDPOINT = '/payments/simplified-refund/%s';
 
-    public function __invoke(SimplifiedRefundRequest $request)
+    public function __invoke(SimplifiedRefundRequest $request): SimplifiedRefundResponse
     {
         $response = $this->httpClient->post(
             sprintf(self::SIMPLIFIED_REFUND_ENDPOINT, $request->getOrderId()),

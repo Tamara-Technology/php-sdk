@@ -12,7 +12,7 @@ class CheckPaymentOptionsAvailabilityRequestHandler extends AbstractRequestHandl
 
     private const CHECK_PAYMENT_OPTIONS_AVAILABILITY_ENDPOINT = '/checkout/payment-options-pre-check';
 
-    public function __invoke(CheckPaymentOptionsAvailabilityRequest $request)
+    public function __invoke(CheckPaymentOptionsAvailabilityRequest $request): CheckPaymentOptionsAvailabilityResponse
     {
         $response = $this->httpClient->post(
             self::CHECK_PAYMENT_OPTIONS_AVAILABILITY_ENDPOINT,

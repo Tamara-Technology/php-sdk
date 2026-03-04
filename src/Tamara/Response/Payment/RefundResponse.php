@@ -34,12 +34,18 @@ class RefundResponse extends ClientResponse
         return $this->refunds;
     }
 
+    /**
+     * @param array<string, mixed> $responseData
+     */
     protected function parse(array $responseData): void
     {
         $this->orderId = $responseData[Order::ORDER_ID];
         $this->toRefunds($responseData[Refund::REFUND_COLLECTION]);
     }
 
+    /**
+     * @param array<int, array<string, mixed>> $refunds
+     */
     private function toRefunds(array $refunds): void
     {
         foreach ($refunds as $refund) {

@@ -92,6 +92,9 @@ class CancelOrderRequest
         return $this->discountAmount;
     }
 
+    /**
+     * @return array<string, mixed>
+     */
     public function toArray(): array
     {
         return [

@@ -11,7 +11,7 @@ class CaptureRequestHandler extends AbstractRequestHandler
 {
     private const CAPTURE_ENDPOINT = '/payments/capture';
 
-    public function __invoke(CaptureRequest $request)
+    public function __invoke(CaptureRequest $request): CaptureResponse
     {
         $response = $this->httpClient->post(
             self::CAPTURE_ENDPOINT,

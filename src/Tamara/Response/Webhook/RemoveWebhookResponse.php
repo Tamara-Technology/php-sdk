@@ -8,6 +8,9 @@ use Tamara\Response\ClientResponse;
 
 class RemoveWebhookResponse extends ClientResponse
 {
+    /**
+     * @param array<string, mixed> $responseData
+     */
     protected function parse(array $responseData): void
     {
     }
