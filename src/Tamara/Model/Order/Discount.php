@@ -28,6 +28,9 @@ class Discount
         $this->amount = $amount;
     }
 
+    /**
+     * @param array<string, mixed> $data
+     */
     public static function fromArray(array $data): Discount
     {
         return new self($data[self::NAME], Money::fromArray($data[self::AMOUNT]));
@@ -57,6 +60,9 @@ class Discount
         return $this->amount;
     }
 
+    /**
+     * @return array<string, mixed>
+     */
     public function toArray(): array
     {
         return [

@@ -45,9 +45,9 @@ class Order
     private $orderReferenceId;
 
     /**
-     * @var string
+     * @var string|null
      */
-    private $orderNumber;
+    private $orderNumber = null;
 
     /**
      * @var Money
@@ -130,9 +130,9 @@ class Order
     private $platform;
 
     /**
-     * @var RiskAssessment
+     * @var RiskAssessment|null
      */
-    private $riskAssessment;
+    private $riskAssessment = null;
 
     /**
      * @var int
@@ -168,7 +168,7 @@ class Order
         return $this->orderNumber ?? $this->getOrderReferenceId();
     }
 
-    public function setOrderNumber(string $orderNumber): Order
+    public function setOrderNumber(?string $orderNumber): Order
     {
         $this->orderNumber = $orderNumber;
 
@@ -201,7 +201,7 @@ class Order
 
     public function getDescription(): string
     {
-        return $this->description ?? '';
+        return $this->description;
     }
 
     public function setDescription(string $description): Order
@@ -249,7 +249,7 @@ class Order
 
     public function getLocale(): string
     {
-        return $this->locale ?? '';
+        return $this->locale;
     }
 
     public function setLocale(string $locale): Order
@@ -357,7 +357,7 @@ class Order
 
     public function getPlatform(): string
     {
-        return $this->platform ?? '';
+        return $this->platform;
     }
 
     public function setPlatform(string $platform): Order
@@ -372,7 +372,7 @@ class Order
         return $this->riskAssessment ?? new RiskAssessment([]);
     }
 
-    public function setRiskAssessment(RiskAssessment $riskAssessment): Order
+    public function setRiskAssessment(?RiskAssessment $riskAssessment): Order
     {
         $this->riskAssessment = $riskAssessment;
 
@@ -396,6 +396,9 @@ class Order
         return $this;
     }
 
+    /**
+     * @return array<string, mixed>
+     */
     public function toArray(): array
     {
         $result = [

@@ -20,12 +20,12 @@ class RetrieveWebhookResponse extends ClientResponse
     private $url;
 
     /**
-     * @var array
+     * @var array<int, string>
      */
     private $events;
 
     /**
-     * @var array
+     * @var array<string, string>
      */
     private $headers;
 
@@ -39,16 +39,25 @@ class RetrieveWebhookResponse extends ClientResponse
         return $this->url;
     }
 
+    /**
+     * @return array<int, string>
+     */
     public function getEvents(): array
     {
         return $this->events;
     }
 
+    /**
+     * @return array<string, string>
+     */
     public function getHeaders(): array
     {
         return $this->headers;
     }
 
+    /**
+     * @param array<string, mixed> $responseData
+     */
     protected function parse(array $responseData): void
     {
         $this->webhookId = $responseData[Webhook::WEBHOOK_ID];

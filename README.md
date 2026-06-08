@@ -8,7 +8,14 @@ Update `composer.json`
 
 ```yaml
 "require": {
-    "tamara-solution/php-sdk": "1.*"
+    "tamara-solution/php-sdk": "^3.0.0"
+}
+```
+
+If you are using PHP < 8.1, please use the version, 2.x
+```yaml
+"require": {
+    "tamara-solution/php-sdk": "^2.0.0"
 }
 ```
 

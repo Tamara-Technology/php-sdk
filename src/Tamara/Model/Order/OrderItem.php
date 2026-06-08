@@ -76,6 +76,9 @@ class OrderItem
      */
     private $itemUrl;
 
+    /**
+     * @param array<string, mixed> $data
+     */
     public static function fromArray(array $data): OrderItem
     {
         $self = new self();
@@ -101,7 +104,7 @@ class OrderItem
 
     public function getType(): string
     {
-        return $this->type ?? '';
+        return $this->type;
     }
 
     public function getName(): string
@@ -217,7 +220,7 @@ class OrderItem
 
     public function getImageUrl(): string
     {
-        return $this->imageUrl ?? '';
+        return $this->imageUrl;
     }
 
     /**
@@ -234,9 +237,12 @@ class OrderItem
      */
     public function getItemUrl(): string
     {
-        return $this->itemUrl ?? '';
+        return $this->itemUrl;
     }
 
+    /**
+     * @return array<string, mixed>
+     */
     public function toArray(): array
     {
         return [

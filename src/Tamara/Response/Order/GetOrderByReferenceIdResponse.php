@@ -248,6 +248,9 @@ class GetOrderByReferenceIdResponse extends ClientResponse
         return $this->instalments;
     }
 
+    /**
+     * @param array<string, mixed> $responseData
+     */
     protected function parse(array $responseData): void
     {
         $settlementDate = !empty($responseData[self::SETTLEMENT_DATE])

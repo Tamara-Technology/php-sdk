@@ -12,7 +12,7 @@ class RemoveWebhookRequestHandler extends AbstractRequestHandler
 {
     private const DELETE_WEBHOOK_ENDPOINT = '/webhooks/%s';
 
-    public function __invoke(RemoveWebhookRequest $request)
+    public function __invoke(RemoveWebhookRequest $request): RemoveWebhookResponse
     {
         $response = $this->httpClient->delete(
             sprintf(self::DELETE_WEBHOOK_ENDPOINT, $request->getWebhookId())

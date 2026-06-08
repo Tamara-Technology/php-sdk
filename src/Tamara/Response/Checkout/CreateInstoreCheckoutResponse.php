@@ -19,6 +19,9 @@ class CreateInstoreCheckoutResponse extends ClientResponse
         return $this->instoreCheckoutResponse;
     }
 
+    /**
+     * @param array<string, mixed> $responseData
+     */
     protected function parse(array $responseData): void
     {
         $this->instoreCheckoutResponse = new InstoreCheckoutResponse($responseData);

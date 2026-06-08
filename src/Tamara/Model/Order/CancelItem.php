@@ -42,6 +42,9 @@ class CancelItem
      */
     private $createdAt;
 
+    /**
+     * @param array<string, mixed> $data
+     */
     public static function fromArray(array $data): CancelItem
     {
         $self = new self();
@@ -104,6 +107,9 @@ class CancelItem
         $this->createdAt = $createdAt;
     }
 
+    /**
+     * @return array<string, mixed>
+     */
     public function toArray(): array
     {
         return [

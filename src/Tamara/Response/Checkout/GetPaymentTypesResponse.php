@@ -8,7 +8,7 @@ use Tamara\Response\ClientResponse;
 class GetPaymentTypesResponse extends ClientResponse
 {
     /**
-     * @var array|PaymentTypeCollection
+     * @var PaymentTypeCollection|null
      */
     private $paymentTypes;
 
@@ -20,8 +20,13 @@ class GetPaymentTypesResponse extends ClientResponse
         return $this->isSuccess() ? $this->paymentTypes : null;
     }
 
+    /**
+     * @param array<string, mixed>|array<int, array<string, mixed>> $responseData
+     */
     protected function parse(array $responseData): void
     {
-        $this->paymentTypes = new PaymentTypeCollection($responseData);
+        /** @var array<int, array<string, mixed>> $paymentTypesData */
+        $paymentTypesData = isset($responseData['payment_types']) ? $responseData['payment_types'] : $responseData;
+        $this->paymentTypes = new PaymentTypeCollection($paymentTypesData);
     }
 }

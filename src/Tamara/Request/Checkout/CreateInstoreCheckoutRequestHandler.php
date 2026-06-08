@@ -11,7 +11,7 @@ class CreateInstoreCheckoutRequestHandler extends AbstractRequestHandler
 {
     private const INSTORE_CHECKOUT_ENDPOINT = '/checkout/in-store-session';
 
-    public function __invoke(CreateInstoreCheckoutRequest $request)
+    public function __invoke(CreateInstoreCheckoutRequest $request): CreateInstoreCheckoutResponse
     {
         $response = $this->httpClient->post(
             self::INSTORE_CHECKOUT_ENDPOINT,

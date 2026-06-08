@@ -9,13 +9,19 @@ use ArrayIterator;
 use Countable;
 use IteratorAggregate;
 
+/**
+ * @implements IteratorAggregate<int, OrderItem>
+ */
 class OrderItemCollection implements IteratorAggregate, Countable
 {
     /**
-     * @var array|OrderItem[]
+     * @var array<int, OrderItem>
      */
     private $data = [];
 
+    /**
+     * @param array<int, array<string, mixed>> $data
+     */
     public static function create(array $data): OrderItemCollection
     {
         $self = new self();
@@ -33,11 +39,17 @@ class OrderItemCollection implements IteratorAggregate, Countable
         return $this;
     }
 
+    /**
+     * @return array<int, OrderItem>
+     */
     public function getItems(): array
     {
         return $this->data;
     }
 
+    /**
+     * @return array<int, array<string, mixed>>
+     */
     public function toArray(): array
     {
         $ret = [];
@@ -50,6 +62,9 @@ class OrderItemCollection implements IteratorAggregate, Countable
         return $ret;
     }
 
+    /**
+     * @return ArrayIterator<int, OrderItem>
+     */
     public function getIterator(): ArrayIterator
     {
         return new ArrayIterator($this->data);

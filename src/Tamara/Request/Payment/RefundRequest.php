@@ -19,6 +19,9 @@ class RefundRequest
      */
     private $refunds;
 
+    /**
+     * @param array<int, Refund> $refunds
+     */
     public function __construct(string $orderId, array $refunds = [])
     {
         $this->orderId = $orderId;
@@ -43,6 +46,9 @@ class RefundRequest
         return $this->refunds;
     }
 
+    /**
+     * @return array<string, mixed>
+     */
     public function toArray(): array
     {
         $refunds = [];

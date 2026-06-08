@@ -19,6 +19,9 @@ class CreateCheckoutResponse extends ClientResponse
         return $this->checkoutResponse;
     }
 
+    /**
+     * @param array<string, mixed> $responseData
+     */
     protected function parse(array $responseData): void
     {
         $this->checkoutResponse = new CheckoutResponse($responseData);

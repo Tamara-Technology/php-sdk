@@ -32,13 +32,13 @@ class Authenticator
      */
     public function authenticate(Request $request): void
     {
-        if (!$request->headers->has(self::AUTHORIZATION) && !$request->get(self::TOKEN)) {
+        if (!$request->headers->has(self::AUTHORIZATION) && !$request->query->get(self::TOKEN)) {
             throw new ForbiddenException('Access denied.');
         }
 
         $token = $request->headers->get(self::AUTHORIZATION)
             ? $this->getBearerToken($request->headers->get(self::AUTHORIZATION))
-            : $request->get(self::TOKEN);
+            : $request->query->get(self::TOKEN);
 
         try {
             $this->decode($token);

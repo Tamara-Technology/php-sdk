@@ -17,12 +17,12 @@ abstract class ClientResponse
     private $content;
 
     /**
-     * @var string
+     * @var string|null
      */
     private $message;
 
     /**
-     * @var array|null the error details
+     * @var array<int, mixed>|null the error details
      */
     private $errors;
 
@@ -51,22 +51,28 @@ abstract class ClientResponse
     }
 
     /**
-     * @return null|string the raw content
+     * @return string the raw content
      */
     public function getContent(): string
     {
         return $this->content ?? '';
     }
 
-    public function getMessage(): string
+    public function getMessage(): ?string
     {
         return $this->message ?? '';
     }
 
+    /**
+     * @return array<int, mixed>
+     */
     public function getErrors(): array
     {
         return $this->errors ?? [];
     }
 
+    /**
+     * @param array<string, mixed> $responseData
+     */
     abstract protected function parse(array $responseData): void;
 }

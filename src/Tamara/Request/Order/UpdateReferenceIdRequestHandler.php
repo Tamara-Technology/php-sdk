@@ -11,7 +11,7 @@ class UpdateReferenceIdRequestHandler extends AbstractRequestHandler
 {
     private const CANCEL_ORDER_ENDPOINT = '/orders/%s/reference-id';
 
-    public function __invoke(UpdateReferenceIdRequest $request)
+    public function __invoke(UpdateReferenceIdRequest $request): UpdateReferenceIdResponse
     {
         $response = $this->httpClient->put(
             sprintf(self::CANCEL_ORDER_ENDPOINT, $request->getOrderId()),
