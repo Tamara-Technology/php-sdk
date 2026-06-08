@@ -11,15 +11,10 @@ class CheckoutResponse
         CHECKOUT_ID = 'checkout_id',
         CHECKOUT_URL = 'checkout_url';
 
-    private string $orderId;
+    private $orderId;
+    private $checkoutUrl;
+    private $checkoutId;
 
-    private string $checkoutUrl;
-
-    private string $checkoutId;
-
-    /**
-     * @param array<string, mixed> $response
-     */
     public function __construct(array $response)
     {
         $this->orderId = $response[self::ORDER_ID];
@@ -37,14 +32,11 @@ class CheckoutResponse
         return $this->checkoutUrl;
     }
 
-    public function getCheckoutId(): string
+    public function getCheckoutId()
     {
         return $this->checkoutId;
     }
 
-    /**
-     * @return array<string, mixed>
-     */
     public function toArray(): array
     {
         return [

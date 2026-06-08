@@ -34,9 +34,6 @@ class UpdateReferenceIdRequest
         return $this->referenceId;
     }
 
-    /**
-     * @return array<string, mixed>
-     */
     public function toArray(): array
     {
         return [

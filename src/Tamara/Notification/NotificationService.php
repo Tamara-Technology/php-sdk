@@ -54,7 +54,7 @@ class NotificationService
     }
 
     /**
-     * @return array<string, mixed>
+     * @return array
      *
      * @throws ForbiddenException
      * @throws NotificationException

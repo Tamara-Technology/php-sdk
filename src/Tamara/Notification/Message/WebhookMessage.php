@@ -14,9 +14,6 @@ class WebhookMessage extends AbstractMessage
      */
     private $eventType;
 
-    /**
-     * @param array<string, mixed> $data
-     */
     public function __construct(string $orderId, string $orderReferenceId, array $data, string $eventType)
     {
         parent::__construct($orderId, $orderReferenceId, $data);
@@ -24,12 +21,9 @@ class WebhookMessage extends AbstractMessage
     }
 
 
-    /**
-     * @param array<string, mixed> $data
-     */
     public static function fromArray(array $data): AbstractMessage
     {
-        return new self(
+        return new static(
             $data[self::ORDER_ID],
             $data[self::ORDER_REFERENCE_ID],
             $data[self::DATA],

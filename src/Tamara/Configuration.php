@@ -2,43 +2,70 @@
 
 namespace Tamara;
 
+use Psr\Http\Client\ClientInterface;
 use Psr\Log\LoggerInterface;
 use Tamara\HttpClient\AdapterFactory;
-use Tamara\HttpClient\ClientInterface;
 use Tamara\HttpClient\HttpClient;
 
 class Configuration
 {
-    protected string $apiUrl;
-
-    protected string $apiToken;
-
-    /** @var int in seconds */
-    protected int $apiRequestTimeout = 120;
-
-    protected ?ClientInterface $transport = null;
-
-    protected ?LoggerInterface $logger = null;
+    /**
+     * @var string
+     */
+    protected $apiUrl;
 
     /**
+     * @var string
+     */
+    protected $apiToken;
+
+    /**
+     * @var int in seconds
+     */
+    protected $apiRequestTimeout = 120;
+
+    /**
+     * @var ClientInterface
+     */
+    protected $transport;
+
+    /**
+     * @var LoggerInterface
+     */
+    protected $logger;
+
+    /**
+     * @param string               $apiUrl
+     * @param string               $apiToken
+     * @param int|null             $apiRequestTimeout
+     * @param LoggerInterface|null $logger
+     * @param ClientInterface|null $transport
+     *
      * @return Configuration
      */
     public static function create(
         string $apiUrl,
         string $apiToken,
-        ?int $apiRequestTimeout = null,
-        ?LoggerInterface $logger = null,
-        ?ClientInterface $transport = null
+        int $apiRequestTimeout = null,
+        LoggerInterface $logger = null,
+        ClientInterface $transport = null
     ): Configuration {
-        return new self($apiUrl, $apiToken, $apiRequestTimeout, $logger, $transport);
+        return new static($apiUrl, $apiToken, $apiRequestTimeout, $logger, $transport);
     }
 
+    /**
+     * @param string               $apiUrl
+     * @param string               $apiToken
+     * @param int|null             $apiRequestTimeout
+     * @param LoggerInterface|null $logger
+     * @param ClientInterface|null $transport
+     */
     public function __construct(
         string $apiUrl,
         string $apiToken,
-        ?int $apiRequestTimeout = null,
-        ?LoggerInterface $logger = null,
-        ?ClientInterface $transport = null
+        int $apiRequestTimeout = null,
+        LoggerInterface $logger = null,
+        ClientInterface $transport = null
     ) {
         $this->apiUrl = $apiUrl;
         $this->apiToken = $apiToken;
@@ -51,9 +78,12 @@ class Configuration
         $this->transport = $transport;
     }
 
+    /**
+     * @return HttpClient
+     */
     public function createHttpClient(): HttpClient
     {
-        $transport = $this->transport !== null ? $this->transport : $this->createDefaultTransport();
+        $transport = $this->transport ?? $this->createDefaultTransport();
 
         return new HttpClient(
             $this->getApiUrl(),
@@ -86,11 +116,17 @@ class Configuration
         return $this->apiRequestTimeout;
     }
 
+    /**
+     * @return LoggerInterface|null
+     */
     public function getLogger(): ?LoggerInterface
     {
-        return $this->logger;
+        return $this->logger ?? null;
     }
 
+    /**
+     * @return ClientInterface
+     */
     protected function createDefaultTransport(): ClientInterface
     {
         return AdapterFactory::create($this->getApiRequestTimeout(), $this->getLogger());

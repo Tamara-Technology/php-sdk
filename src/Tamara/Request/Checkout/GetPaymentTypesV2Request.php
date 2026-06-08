@@ -42,13 +42,10 @@ class GetPaymentTypesV2Request
     private $riskAssessment;
 
     /**
-     * @var array<string, mixed>|null
+     * @var array
      */
     private $additionalData = [];
 
-    /**
-     * @param array<string, mixed>|null $additionalData
-     */
     public function __construct(
         Money $totalAmount,
         string $countryCode,
@@ -64,7 +61,7 @@ class GetPaymentTypesV2Request
         $this->consumer = $consumer;
         $this->shippingAddress = $shippingAddress;
         $this->riskAssessment = $riskAssessment;
-        $this->additionalData = $additionalData ?? [];
+        $this->additionalData = $additionalData;
     }
 
     public function getTotalAmount(): Money
@@ -139,17 +136,11 @@ class GetPaymentTypesV2Request
         return $this;
     }
 
-    /**
-     * @return array<string, mixed>|null
-     */
     public function getAdditionalData(): ?array
     {
         return $this->additionalData ?? [];
     }
 
-    /**
-     * @param array<string, mixed>|null $additionalData
-     */
     public function setAdditionalData(?array $additionalData): GetPaymentTypesV2Request
     {
         $this->additionalData = $additionalData;
@@ -157,9 +148,6 @@ class GetPaymentTypesV2Request
         return $this;
     }
 
-    /**
-     * @return array<string, mixed>
-     */
     public function toArray(): array
     {
         return [

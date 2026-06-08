@@ -13,9 +13,6 @@ class CaptureCollection
      */
     private $data = [];
 
-    /**
-     * @param array<int, array<string, mixed>> $data
-     */
     public static function create(array $data): CaptureCollection
     {
         $self = new self();
@@ -26,9 +23,6 @@ class CaptureCollection
         return $self;
     }
 
-    /**
-     * @return array<int, array<string, mixed>>
-     */
     public function toArray(): array
     {
         $ret = [];
@@ -40,9 +34,6 @@ class CaptureCollection
         return $ret;
     }
 
-    /**
-     * @return ArrayIterator<int, CaptureItem>
-     */
     public function getIterator(): ArrayIterator
     {
         return new ArrayIterator($this->data);

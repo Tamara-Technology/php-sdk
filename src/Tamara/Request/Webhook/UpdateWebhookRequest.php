@@ -19,18 +19,15 @@ class UpdateWebhookRequest
     private $url;
 
     /**
-     * @var array<int, string>
+     * @var array
      */
     private $events;
 
     /**
-     * @var array<string, string>|null
+     * @var array|null
      */
     private $headers;
 
-    /**
-     * @param array<int, string> $events
-     */
     public function __construct(string $webhookId, string $url, array $events)
     {
         $this->webhookId = $webhookId;
@@ -48,33 +45,24 @@ class UpdateWebhookRequest
         return $this->url;
     }
 
-    /**
-     * @return array<int, string>
-     */
     public function getEvents(): array
     {
         return $this->events;
     }
 
-    /**
-     * @return array<string, string>
-     */
     public function getHeaders(): array
     {
         return $this->headers ?? [];
     }
 
-    public function addHeaders(string $key, string $value): void
+    public function addHeaders(string $key, $value): void
     {
-        if ($this->headers === null) {
+        if (empty($this->headers)) {
             $this->headers = [];
         }
         $this->headers[$key] = $value;
     }
 
-    /**
-     * @return array<string, mixed>
-     */
     public function toArray(): array
     {
         return [

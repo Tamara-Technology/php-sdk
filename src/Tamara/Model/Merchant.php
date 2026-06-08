@@ -30,10 +30,10 @@ class Merchant
     }
 
     /**
-     * @param array<string, mixed> $data
+     * @param array $data
      * @return Merchant
      */
-    public static function fromArray(array $data): self
+    public static function fromArray(array $data)
     {
         return new self($data[self::SINGLE_CHECKOUT_ENABLED], $data[self::PUBLIC_KEY]);
     }

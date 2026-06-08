@@ -103,9 +103,6 @@ class Capture
         return $this->shippingInfo;
     }
 
-    /**
-     * @return array<string, mixed>
-     */
     public function toArray(): array
     {
         return [

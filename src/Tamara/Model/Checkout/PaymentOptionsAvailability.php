@@ -49,9 +49,9 @@ class PaymentOptionsAvailability
     }
 
     /**
-     * @return array<string, mixed>
+     * @return array
      */
-    public function toArray(): array
+    public function toArray()
     {
         return [
             self::COUNTRY      => $this->getCountry(),

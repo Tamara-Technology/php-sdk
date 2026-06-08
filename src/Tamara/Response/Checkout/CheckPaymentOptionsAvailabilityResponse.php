@@ -24,7 +24,7 @@ class CheckPaymentOptionsAvailabilityResponse extends ClientResponse
     private $singleCheckoutEnabled = false;
 
     /**
-     * @var array<int, string>
+     * @var array
      */
     private $availablePaymentLabels = [];
 
@@ -45,15 +45,15 @@ class CheckPaymentOptionsAvailabilityResponse extends ClientResponse
     }
 
     /**
-     * @return array<int, string>
+     * @return array
      */
-    public function getAvailablePaymentLabels(): array
+    public function getAvailablePaymentLabels()
     {
         return $this->availablePaymentLabels;
     }
 
     /**
-     * @param array<string, mixed> $responseData
+     * @param array $responseData
      */
     protected function parse(array $responseData): void
     {

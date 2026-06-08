@@ -32,9 +32,6 @@ class CancelResponse extends ClientResponse
         return $this->cancelId;
     }
 
-    /**
-     * @param array<string, mixed> $responseData
-     */
     protected function parse(array $responseData): void
     {
         $this->orderId = $responseData[self::ORDER_ID];

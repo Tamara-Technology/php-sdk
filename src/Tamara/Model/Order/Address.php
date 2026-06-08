@@ -62,9 +62,6 @@ class Address
      */
     private $phoneNumber;
 
-    /**
-     * @param array<string, mixed> $data
-     */
     public static function fromArray(array $data): Address
     {
         $self = new self();
@@ -166,12 +163,12 @@ class Address
 
     public function getRegion(): string
     {
-        return $this->region;
+        return $this->region ?? '';
     }
 
     public function getPostalCode(): string
     {
-        return $this->postalCode;
+        return $this->postalCode ?? '';
     }
 
     public function getCity(): string
@@ -189,9 +186,6 @@ class Address
         return $this->phoneNumber ?? '';
     }
 
-    /**
-     * @return array<string, mixed>
-     */
     public function toArray(): array
     {
         return [

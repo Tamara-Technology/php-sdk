@@ -12,9 +12,6 @@ class CancelCollection
      */
     private $data = [];
 
-    /**
-     * @param array<int, array<string, mixed>> $data
-     */
     public static function create(array $data): CancelCollection
     {
         $self = new self();
@@ -25,9 +22,6 @@ class CancelCollection
         return $self;
     }
 
-    /**
-     * @return array<int, array<string, mixed>>
-     */
     public function toArray(): array
     {
         $ret = [];
@@ -40,9 +34,6 @@ class CancelCollection
         return $ret;
     }
 
-    /**
-     * @return ArrayIterator<int, CancelItem>
-     */
     public function getIterator(): ArrayIterator
     {
         return new ArrayIterator($this->data);

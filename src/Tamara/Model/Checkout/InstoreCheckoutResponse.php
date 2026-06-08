@@ -11,15 +11,10 @@ class InstoreCheckoutResponse
         CHECKOUT_ID = 'checkout_id',
         CHECKOUT_DEEP_LINK = 'checkout_deeplink';
 
-    private string $orderId;
+    private $orderId;
+    private $checkoutId;
+    private $checkoutDeepLink;
 
-    private string $checkoutId;
-
-    private string $checkoutDeepLink;
-
-    /**
-     * @param array<string, mixed> $response
-     */
     public function __construct(array $response)
     {
         $this->orderId = $response[self::ORDER_ID];
@@ -27,9 +22,6 @@ class InstoreCheckoutResponse
         $this->checkoutDeepLink = $response[self::CHECKOUT_DEEP_LINK];
     }
 
-    /**
-     * @return array<string, mixed>
-     */
     public function toArray(): array
     {
         return [
@@ -44,12 +36,12 @@ class InstoreCheckoutResponse
         return $this->orderId;
     }
 
-    public function getCheckoutId(): string
+    public function getCheckoutId()
     {
         return $this->checkoutId;
     }
 
-    public function getCheckoutDeepLink(): string
+    public function getCheckoutDeepLink()
     {
         return $this->checkoutDeepLink;
     }

@@ -11,7 +11,7 @@ class RegisterWebhookRequestHandler extends AbstractRequestHandler
 {
     private const REGISTER_WEBHOOK_ENDPOINT = '/webhooks';
 
-    public function __invoke(RegisterWebhookRequest $request): RegisterWebhookResponse
+    public function __invoke(RegisterWebhookRequest $request)
     {
         $response = $this->httpClient->post(
             self::REGISTER_WEBHOOK_ENDPOINT,

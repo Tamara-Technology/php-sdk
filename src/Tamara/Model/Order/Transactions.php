@@ -26,9 +26,6 @@ class Transactions
      */
     private $refunds;
 
-    /**
-     * @param array<string, mixed> $data
-     */
     public static function fromArray(array $data): Transactions
     {
         $self = new self();
@@ -68,9 +65,6 @@ class Transactions
         $this->refunds = $refunds;
     }
 
-    /**
-     * @return array<string, mixed>
-     */
     public function toArray(): array
     {
         return [

@@ -46,9 +46,6 @@ class ShippingInfo
         $this->trackingUrl = $trackingUrl;
     }
 
-    /**
-     * @param array<string, mixed> $data
-     */
     public static function fromArray(array $data): ShippingInfo
     {
         $self = new self(new DateTimeImmutable($data[self::SHIPPED_AT]), $data[self::SHIPPING_COMPANY]);
@@ -98,9 +95,6 @@ class ShippingInfo
         return $this->trackingUrl;
     }
 
-    /**
-     * @return array<string, mixed>
-     */
     public function toArray(): array
     {
         return [

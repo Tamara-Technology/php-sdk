@@ -80,9 +80,6 @@ class MerchantUrl
         return $this->notificationUrl;
     }
 
-    /**
-     * @return array<string, mixed>
-     */
     public function toArray(): array
     {
         return [

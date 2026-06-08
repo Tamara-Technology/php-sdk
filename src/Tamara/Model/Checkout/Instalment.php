@@ -44,9 +44,6 @@ class Instalment
         return $this->maxLimit;
     }
 
-    /**
-     * @return array<string, mixed>
-     */
     public function toArray(): array
     {
         return [

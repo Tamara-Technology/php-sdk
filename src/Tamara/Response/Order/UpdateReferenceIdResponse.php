@@ -11,18 +11,10 @@ class UpdateReferenceIdResponse extends ClientResponse
     private const MESSAGE = 'message';
 
     /**
-     * @var string|null
+     * @var string
      */
     private $message;
 
-    public function getMessage(): ?string
-    {
-        return $this->message;
-    }
-
-    /**
-     * @param array<string, mixed> $responseData
-     */
     protected function parse(array $responseData): void
     {
         $this->message = $responseData[self::MESSAGE] ?? '';

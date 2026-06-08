@@ -50,9 +50,6 @@ class Consumer
      */
     private $isFirstOrder;
 
-    /**
-     * @param array<string, mixed> $data
-     */
     public static function fromArray(array $data): Consumer
     {
         $self = new self();
@@ -151,9 +148,6 @@ class Consumer
         return $this->isFirstOrder ?? false;
     }
 
-    /**
-     * @return array<string, mixed>
-     */
     public function toArray(): array
     {
         return [

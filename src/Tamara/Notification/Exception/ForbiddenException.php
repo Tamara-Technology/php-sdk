@@ -6,6 +6,5 @@ namespace Tamara\Notification\Exception;
 
 class ForbiddenException extends NotificationException
 {
-    /** @var int */
     protected $code = 401;
 }

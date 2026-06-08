@@ -24,13 +24,10 @@ abstract class AbstractMessage
     private $orderReferenceId;
 
     /**
-     * @var array<string, mixed>
+     * @var array
      */
     private $data;
 
-    /**
-     * @param array<string, mixed> $data
-     */
     public function __construct(string $orderId, string $orderReferenceId, array $data)
     {
         $this->orderId = $orderId;
@@ -48,18 +45,12 @@ abstract class AbstractMessage
         return $this->orderReferenceId;
     }
 
-    /**
-     * @return array<string, mixed>
-     */
     public function getData(): array
     {
         return $this->data;
     }
 
-    /**
-     * @return mixed
-     */
-    public function getDataByKey(string $key): mixed
+    public function getDataByKey(string $key)
     {
         if (!isset($this->data[$key])) {
             throw new NotificationException(sprintf('Invalid key %s', $key));
@@ -68,8 +59,5 @@ abstract class AbstractMessage
         return $this->data[$key];
     }
 
-    /**
-     * @param array<string, mixed> $data
-     */
     abstract public static function fromArray(array $data): AbstractMessage;
 }

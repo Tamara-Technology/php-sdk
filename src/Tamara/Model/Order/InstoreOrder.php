@@ -50,7 +50,7 @@ class InstoreOrder
      */
     private $orderNumber;
     /**
-     * @var array<string, mixed>|null
+     * @var array|null
      */
     private $additionalData;
     /**
@@ -62,9 +62,6 @@ class InstoreOrder
      */
     private $paymentType;
 
-    /**
-     * @return array<string, mixed>
-     */
     public function toArray(): array
     {
         $result = [
@@ -223,7 +220,7 @@ class InstoreOrder
     }
 
     /**
-     * @return array<string, mixed>|null
+     * @return array|null
      */
     public function getAdditionalData(): ?array
     {
@@ -231,7 +228,7 @@ class InstoreOrder
     }
 
     /**
-     * @param array<string, mixed>|null $additionalData
+     * @param array|null $additionalData
      * @return InstoreOrder
      */
     public function setAdditionalData(?array $additionalData): InstoreOrder

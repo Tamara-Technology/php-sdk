@@ -11,7 +11,7 @@ use Tamara\Exception\RequestException;
 
 class NyholmHttpAdapter implements ClientInterface
 {
-    private Curl $client;
+    private $client;
 
     /**
      * @var int
@@ -23,16 +23,14 @@ class NyholmHttpAdapter implements ClientInterface
      */
     protected $logger;
 
-    public function __construct(int $requestTimeout, ?LoggerInterface $logger = null)
+    public function __construct(int $requestTimeout, LoggerInterface $logger = null)
     {
         $this->requestTimeout = $requestTimeout;
         $this->logger = $logger;
         $this->client = new Curl(new Psr17Factory());
     }
 
-    /**
-     * @param array<string, string|string[]> $headers
-     */
+    /** {@inheritDoc} */
     public function createRequest(
         string $method,
         $uri,

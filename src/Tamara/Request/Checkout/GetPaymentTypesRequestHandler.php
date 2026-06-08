@@ -11,7 +11,7 @@ class GetPaymentTypesRequestHandler extends AbstractRequestHandler
 {
     private const GET_PAYMENT_TYPES_ENDPOINT = '/checkout/payment-types';
 
-    public function __invoke(GetPaymentTypesRequest $request): GetPaymentTypesResponse
+    public function __invoke(GetPaymentTypesRequest $request)
     {
         $data = ['country' => $request->getCountryCode()];
         if (!empty($request->getCurrency())) {

@@ -11,7 +11,7 @@ class UpdateWebhookRequestHandler extends AbstractRequestHandler
 {
     private const UPDATE_WEBHOOK_ENDPOINT = '/webhooks/%s';
 
-    public function __invoke(UpdateWebhookRequest $request): UpdateWebhookResponse
+    public function __invoke(UpdateWebhookRequest $request)
     {
         $response = $this->httpClient->put(
             sprintf(self::UPDATE_WEBHOOK_ENDPOINT, $request->getWebhookId()),

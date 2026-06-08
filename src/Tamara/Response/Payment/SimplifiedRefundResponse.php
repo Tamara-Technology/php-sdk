@@ -83,7 +83,7 @@ class SimplifiedRefundResponse extends ClientResponse
     }
 
     /**
-     * @param array<string, mixed> $responseData
+     * @param array $responseData
      */
     protected function parse(array $responseData): void
     {

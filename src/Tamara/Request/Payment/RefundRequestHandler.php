@@ -11,7 +11,7 @@ class RefundRequestHandler extends AbstractRequestHandler
 {
     private const CAPTURE_ENDPOINT = '/payments/refund';
 
-    public function __invoke(RefundRequest $request): RefundResponse
+    public function __invoke(RefundRequest $request)
     {
         $response = $this->httpClient->post(
             self::CAPTURE_ENDPOINT,

@@ -9,9 +9,6 @@ use IteratorAggregate;
 use Tamara\Model\Money;
 use Tamara\Model\Order\Order;
 
-/**
- * @implements IteratorAggregate<int, PaymentType>
- */
 class PaymentTypeCollection implements IteratorAggregate, Countable
 {
     private const
@@ -20,12 +17,11 @@ class PaymentTypeCollection implements IteratorAggregate, Countable
         MIN_LIMIT = 'min_limit',
         MAX_LIMIT = 'max_limit';
 
-    /** @var array<int, PaymentType> */
-    private array $data = [];
-
     /**
-     * @param array<int, array<string, mixed>> $paymentTypes
+     * @var array|PaymentType[]
      */
+    private $data = [];
+
     public function __construct(array $paymentTypes)
     {
         $zeroDefault = [
@@ -47,9 +43,6 @@ class PaymentTypeCollection implements IteratorAggregate, Countable
         }
     }
 
-    /**
-     * @return ArrayIterator<int, PaymentType>
-     */
     public function getIterator(): ArrayIterator
     {
         return new ArrayIterator($this->data);
@@ -63,10 +56,6 @@ class PaymentTypeCollection implements IteratorAggregate, Countable
         return count($this->data);
     }
 
-    /**
-     * @param array<string, mixed> $data
-     * @return array<int, Instalment>
-     */
     private function parseSupportedInstalments(array $data): array
     {
         $zeroDefault = [

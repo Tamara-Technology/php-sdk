@@ -40,8 +40,10 @@ class HttpClient
     }
 
     /**
-     * @param array<string, mixed> $params
+     * @param string $path
+     * @param array  $params
      *
+     * @return ResponseInterface
      * @throws ClientExceptionInterface
      * @throws RequestException
      */
@@ -51,8 +53,10 @@ class HttpClient
     }
 
     /**
-     * @param array<string, mixed> $params
+     * @param string $path
+     * @param array  $params
      *
+     * @return ResponseInterface
      * @throws ClientExceptionInterface
      */
     public function put(string $path, array $params = []): ResponseInterface
@@ -61,8 +65,10 @@ class HttpClient
     }
 
     /**
-     * @param array<string, mixed> $params
+     * @param string $path
+     * @param array  $params
      *
+     * @return ResponseInterface
      * @throws ClientExceptionInterface
      */
     public function post(string $path, array $params = []): ResponseInterface
@@ -71,8 +77,10 @@ class HttpClient
     }
 
     /**
-     * @param array<string, mixed> $params
+     * @param string $path
+     * @param array  $params
      *
+     * @return ResponseInterface
      * @throws ClientExceptionInterface
      */
     public function delete(string $path, array $params = []): ResponseInterface
@@ -81,10 +89,12 @@ class HttpClient
     }
 
     /**
-     * @param array<string, mixed> $params
+     * @param string $method
+     * @param string $path
+     * @param array  $params
      *
-     * @throws ClientExceptionInterface
-     * @throws RequestException
+     * @return null|ResponseInterface
+     * @throws ClientExceptionInterface|RequestException
      */
     private function request(string $method, string $path, array $params = []): ?ResponseInterface
     {
@@ -133,7 +143,10 @@ class HttpClient
     }
 
     /**
-     * @param array<string, mixed> $params
+     * @param string $path
+     * @param array  $params
+     *
+     * @return string
      */
     private function prepareQueryString(string $path, array $params = []): string
     {

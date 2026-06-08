@@ -32,9 +32,6 @@ class CaptureResponse extends ClientResponse
         return $this->captureId;
     }
 
-    /**
-     * @param array<string, mixed> $responseData
-     */
     protected function parse(array $responseData): void
     {
         $this->orderId = $responseData[self::ORDER_ID];
