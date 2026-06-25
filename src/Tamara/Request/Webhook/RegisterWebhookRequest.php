@@ -55,7 +55,7 @@ class RegisterWebhookRequest
 
     public function addHeaders(string $key, string $value): void
     {
-        if ($this->headers === null) {
+        if (empty($this->headers)) {
             $this->headers = [];
         }
         $this->headers[$key] = $value;
