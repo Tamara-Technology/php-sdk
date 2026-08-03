@@ -8,6 +8,8 @@ use Tamara\Request\Checkout\CreateCheckoutRequest;
 use Tamara\Request\Checkout\CreateInstoreCheckoutRequest;
 use Tamara\Request\Checkout\GetPaymentTypesRequest;
 use Tamara\Request\Checkout\GetPaymentTypesV2Request;
+use Tamara\Request\Checkout\PreCheckoutEligibilityRequest;
+use Tamara\Request\Checkout\PreQualificationSessionRequest;
 use Tamara\Request\Checkout\VoidCheckoutSessionRequest;
 use Tamara\Request\Merchant\GetPublicConfigsRequest;
 use Tamara\Request\Order\AuthoriseOrderRequest;
@@ -27,6 +29,8 @@ use Tamara\Response\Checkout\CheckPaymentOptionsAvailabilityResponse;
 use Tamara\Response\Checkout\CreateCheckoutResponse;
 use Tamara\Response\Checkout\CreateInstoreCheckoutResponse;
 use Tamara\Response\Checkout\GetPaymentTypesResponse;
+use Tamara\Response\Checkout\PreCheckoutEligibilityResponse;
+use Tamara\Response\Checkout\PreQualificationSessionResponse;
 use Tamara\Response\Checkout\VoidCheckoutSessionResponse;
 use Tamara\Response\Merchant\GetPublicConfigsResponse;
 use Tamara\Response\Order\AuthoriseOrderResponse;
@@ -255,6 +259,29 @@ class Client
      */
     public function checkPaymentOptionsAvailability(CheckPaymentOptionsAvailabilityRequest $request): CheckPaymentOptionsAvailabilityResponse
     {
+        return $this->requestDispatcher->dispatch($request);
+    }
+
+    /**
+     * Check whether a customer is eligible to use Tamara before checkout.
+     *
+     * @throws Exception\RequestDispatcherException
+     */
+    public function preCheckoutEligibility(PreCheckoutEligibilityRequest $request): PreCheckoutEligibilityResponse
+    {
+        return $this->requestDispatcher->dispatch($request);
+    }
+
+    /**
+     * Create a session for a customer to check their available spending limit.
+     *
+     * @param PreQualificationSessionRequest $request
+     * @return PreQualificationSessionResponse
+     * @throws Exception\RequestDispatcherException
+     */
+    public function createPreQualificationSession(
+        PreQualificationSessionRequest $request
+    ): PreQualificationSessionResponse {
         return $this->requestDispatcher->dispatch($request);
     }
 
