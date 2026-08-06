@@ -258,7 +258,7 @@ class GetOrderByReferenceIdResponse extends ClientResponse
         $this->orderReferenceId = $responseData[self::ORDER_REFERENCE_ID];
         $this->orderNumber = $responseData[self::ORDER_NUMBER] ?? $this->orderReferenceId;
         $this->consumer = Consumer::fromArray($responseData[self::CONSUMER]);
-        $this->status = $responseData[self::STATUS];
+        $this->status = $responseData[self::STATUS] ?? '';
         $this->billingAddress = is_array($responseData[self::BILLING_ADDRESS]) ? Address::fromArray($responseData[self::BILLING_ADDRESS]) : null;
         $this->shippingAddress = Address::fromArray($responseData[self::SHIPPING_ADDRESS]);
         $this->paymentType = $responseData[self::PAYMENT_TYPE] ?? '';
